@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%include ../layout/head.ejs%>
+</head>
+<body data-spy="scroll" data-target="#navbarResponsive">
+
+<!-- Header-->
+
+<%include ../layout/header.ejs%>
+
+
+<hr  style="margin-top: 5.5rem; margin-bottom: 1.5rem">
+
+<div class="container my-4 link">
+    <a href="/">Home ></a> <a href="/category">Category</a>
+</div>
+
+<!--Category-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-12 order-2 order-lg-1">
+            <div class="sider-bar-wrap">
+                <aside class="widget widget-categories">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <ul class="sidebar-menu">
+                        <% categories.forEach(function (category) { %>
+                        <li><a href="/category?category=<%=category%>"><%=category%></a></li>
+                        <%})%>
+                    </ul>
+                </aside>
+                <aside class="widget widget-tags">
+                    <h3 class="sidebar-title">Brand</h3>
+                    <ul>
+                        <% brands.forEach(function (brand) { %>
+                        <li><a href="/category?brand=<%=brand%>"><%=brand%></a></li>
+                        <%})%>
+                    </ul>
+                </aside>
+                <aside class="widget top-product-widget">
+                    <h3 class="sidebar-title">Top rated products</h3>
+                    <div class="product_item">
+                        <div class="row">
+                            <%  for (var i = 0 ; i < 1; i++) { %>
+                                <div class="single-product">
+                                    <div class="product-image">
+                                        <img src="<%=listData[i].productImage%>" alt=""/>
+                                        <div class="new">Best Seller</div>
+                                        <div class="box-content">
+                                            <a href="/category/product?id=<%=listData[i]._id%>"><i class="fa fa-search"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-text">
+                                        <h4><%=listData[i].productName%></h4>
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <span class="price"><%=listData[i].productPrice%></span>
+                                    </div>
+                                </div>
+                            <%  }  %>
+                        </div> <!-- End Col -->
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-12 order-1 order-lg-2">
+            <div class="toolbar">
+                <div class="show-result">
+                    <p> Showing 1–9 of 36 results</p>
+                </div>
+                <div class="toolbar-form">
+                    <form action="#">
+                        <div class="tolbar-select">
+                            <select>
+                                <option value="volvo">Sort by popularity</option>
+                                <option value="saab">Default sorting</option>
+                                <option value="mercedes">Sort by average rating</option>
+                                <option value="audi">Sort by newness</option>
+                                <option value="audi">Sort by price: low to high</option>
+                                <option value="audi">Sort by price: high to low</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <% for (var i = 0; i < listData.length; i++){ %>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="single-product">
+                            <div class="product-image">
+                                <img src="<%=listData[i].productImage%>"/>
+                                <div class="box-content">
+                                    <a href="/category/product?id=<%=listData[i]._id%>"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="product-text">
+                                <h4><%=listData[i].productName%></h4>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <span class="price"><%=listData[i].productPrice%></span>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+
+            <!-- pagination start -->
+            <div class="pagination">
+                <ul>
+                    <%
+                    if(parseInt(page) > 1){
+                    %>
+                        <li>
+                            <a href="category?page=<%= parseInt(page) - 1 %>&limit=<%= limit %>">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                        </li>
+                    <%
+                    }
+                    %>
+                    <span class="pagination-page"><%= page %></span>
+
+                    <%
+                    if(parseInt(page) < parseInt(totalPage)){
+                    %>
+
+                    <li>
+                        <a href="category?page=<%= parseInt(page) + 1 %>&limit=<%= limit %>">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </li>
+
+                    <%
+                    }
+                    %>
+                </ul>
+            </div>
+            <!-- pagination end -->
+        </div>
+    </div>
+</div>
+
+
+<hr class="my-4">
+
+    <!--Footer-->
+    <%include ../layout/footer.ejs%>
+
+    <!-- Src Script -->
+    <%include ../layout/script.ejs%>
+</body>
+</html>
