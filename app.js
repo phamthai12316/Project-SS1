@@ -58,8 +58,7 @@ app.get("/mailchimp/auth/authorize", function(req, res) {
       querystring.stringify({
         response_type: "code",
         client_id: mailchimpClientId,
-        redirect_uri:
-          "https://harvel-electric.herokuapp.com/mailchimp/auth/callback"
+        redirect_uri: "https://harvel-electric.herokuapp.com"
       })
   );
 });
@@ -72,8 +71,7 @@ app.get("/", function(req, res) {
         grant_type: "authorization_code",
         client_id: mailchimpClientId,
         client_secret: mailchimpSecretKey,
-        redirect_uri:
-          "https://harvel-electric.herokuapp.com/mailchimp/auth/callback",
+        redirect_uri: "https://harvel-electric.herokuapp.com",
         code: req.query.code
       })
     )
