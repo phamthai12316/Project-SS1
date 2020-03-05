@@ -85,25 +85,25 @@ app.get("https://harvel-electric.herokuapp.com", function(req, res) {
         request
           .get("https://login.mailchimp.com/oauth2/metadata")
           .set("Accept", "application/json")
-          .set("Authorization", "OAuth " + result.body.access_token)
-          .end((err, metaResult) => {
-            if (err) {
-              res.send(
-                "An unexpected error occured while trying to get MailChimp meta oAuth"
-              );
-            } else {
-              // save the result.body.access_token
-              // save the metadata in metaResult.body
-              // against the current user
-              var mailchimpConf = metaResult;
-              mailchimpConf.access_token = result.body.access_token;
-              dataStore.saveMailChimpForUser(
-                mailchimpConf.login.email,
-                metaResult
-              );
-              res.redirect("/category");
-            }
-          });
+          .set("Authorization", "OAuth " + result.body.access_token);
+        // .end((err, metaResult) => {
+        //   if (err) {
+        //     res.send(
+        //       "An unexpected error occured while trying to get MailChimp meta oAuth"
+        //     );
+        //   } else {
+        //     // save the result.body.access_token
+        //     // save the metadata in metaResult.body
+        //     // against the current user
+        //     var mailchimpConf = metaResult;
+        //     mailchimpConf.access_token = result.body.access_token;
+        //     dataStore.saveMailChimpForUser(
+        //       mailchimpConf.login.email,
+        //       metaResult
+        //     );
+        //     res.redirect("/?email=" + mailchimpConf.login.email);
+        //   }
+        // });
       }
     });
 });
