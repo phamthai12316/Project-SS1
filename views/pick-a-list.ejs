@@ -8,38 +8,5 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <h1>Pick a List</h1>
-    <p>
-      Choose which list to sync your Members from:
-      <select id="lists">
-        <option value="null"></option>
-      </select>
-    </p>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script>
-      $(function() {
-        var queryParams = new URLSearchParams(location.search.slice(1));
-        var mailingListSelect = $("#lists");
-        // 1. make AJAX call for the list of Lists
-        $.get("/mailchimp/lists?email=" + queryParams.get("email"), function(
-          data
-        ) {
-          // 2. insert lists into DOM
-          data.forEach(function(mailchimpList) {
-            mailingListSelect.append(
-              '<option value="' +
-                mailchimpList.id +
-                '">' +
-                mailchimpList.name +
-                "(" +
-                mailchimpList.stats.member_count +
-                " Members)" +
-                "</option>"
-            );
-          });
-        });
-      });
-    </script>
-  </body>
+  <body></body>
 </html>
