@@ -49,8 +49,8 @@ app.use("/", accountRoute);
 var querystring = require("querystring");
 var dataStore = require("./dataStore.js");
 
-var mailchimpClientId = "861393510919";
-var mailchimpSecretKey = "16daee4fe9c135088290bdb84161d593d29f57acd23c38eb00";
+var mailchimpClientId = "964544728141";
+var mailchimpSecretKey = "1c9db8e60b8faa7fd02636852139b08108974743f1703ceddd";
 
 app.get("/mailchimp/auth/authorize", function(req, res) {
   res.redirect(
