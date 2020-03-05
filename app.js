@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 // const multer = require('multer');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 const adminRoute = require("./routes/adminRoute");
 const categoryRoute = require("./routes/categoryRoute");
@@ -44,10 +45,6 @@ app.use("/category", categoryRoute);
 app.use("/admin", adminRoute);
 app.use("/", generalRoute);
 app.use("/", accountRoute);
-
-app.listen(3000, function() {
-  console.log("Hello world!");
-});
 
 var querystring = require("querystring");
 var dataStore = require("./dataStore.js");
@@ -123,5 +120,9 @@ app.get("/mailchimp/lists", function(req, res) {
         res.json(result.body.lists);
       }
     });
+});
+
+app.listen(PORT, () => {
+  console.log(`Our app is running on port ${PORT}`);
 });
 module.exports = app;
