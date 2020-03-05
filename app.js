@@ -101,7 +101,7 @@ app.get("https://harvel-electric.herokuapp.com", function(req, res) {
                 mailchimpConf.login.email,
                 metaResult
               );
-              res.redirect("/?email=" + mailchimpConf.login.email);
+              res.redirect("/category");
             }
           });
       }
