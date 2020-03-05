@@ -71,7 +71,7 @@ app.get("/mailchimp/auth/callback", function(req, res) {
         grant_type: "authorization_code",
         client_id: mailchimpClientId,
         client_secret: mailchimpSecretKey,
-        redirect_uri: "http://127.0.0.1:3000/mailchimp/auth/callback",
+        redirect_uri: "https://harvel-electric.herokuapp.com/",
         code: req.query.code
       })
     )
