@@ -63,7 +63,7 @@ app.get("/mailchimp/auth/authorize", function(req, res) {
   );
 });
 
-app.get("/", function(req, res) {
+app.get("https://harvel-electric.herokuapp.com", function(req, res) {
   request
     .post("https://login.mailchimp.com/oauth2/token")
     .send(
