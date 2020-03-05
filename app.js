@@ -64,7 +64,7 @@ app.get("/mailchimp/auth/authorize", function(req, res) {
   );
 });
 
-app.get("/mailchimp/auth/callback", function(req, res) {
+app.get("/", function(req, res) {
   request
     .post("https://login.mailchimp.com/oauth2/token")
     .send(
